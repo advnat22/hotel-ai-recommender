@@ -1,0 +1,68 @@
+.searchContainer{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #f5f7ff,
+        #ececff
+    );
+}
+
+.searchCard{
+
+    background:white;
+
+    padding:50px;
+
+    border-radius:30px;
+
+    width:500px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    box-shadow:
+
+    0 15px 40px rgba(
+        0,
+        0,
+        0,
+        .05
+    );
+}
+
+.searchCard input{
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid #ddd;
+}
+
+.searchCard button{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#6d5dfc;
+
+    color:white;
+
+    cursor:pointer;
+}
