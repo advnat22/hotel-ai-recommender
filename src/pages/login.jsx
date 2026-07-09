@@ -69,11 +69,11 @@ function Login() {
 
             ?
 
-            "https://hotel-ai-recommender-xwlc-eight.vercel.app/login"
+            "https://hotel-ai-recommender-xwlc-eight.vercel.app/api/login"
 
             :
 
-            "https://hotel-ai-recommender-xwlc-eight.vercel.app/signup";
+            "https://hotel-ai-recommender-xwlc-eight.vercel.app/api/signup";
 
         try {
 
