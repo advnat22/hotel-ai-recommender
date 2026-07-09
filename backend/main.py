@@ -9,7 +9,7 @@ import schemas
 
 from database import engine
 from database import get_db
-from database import Base
+from database import Base   
 
 from pathlib import Path
 import json
@@ -107,9 +107,26 @@ def save_preferences(
         "message": "saved"
     }
 
+import ranking_engine
 
 @app.get("/search")
-def search():
+def search(
+    user_id: int,
+    db: Session = Depends(get_db)
+):
+    pref = db.query(models.Preference).filter(
+        models.Preference.user_id == user_id
+    ).order_by(models.Preference.id.desc()).first()
+
+    if not pref:
+        return {"message": "No preferences found for this user"}
+
+    pref_dict = {
+        "food": pref.food,
+        "transport": pref.transport,
+        "luxury": pref.luxury,
+        "cleanliness": pref.cleanliness
+    }
 
     file_path = Path(__file__).parent / "processed_hotels.json"
 
@@ -119,19 +136,14 @@ def search():
     results = []
 
     for hotel in hotels:
-        rating = hotel.get("rating", 0)
-
-        score = round(rating * 2, 1)
+        score = ranking_engine.hotel_score(hotel, pref_dict)
 
         results.append({
-            "name": hotel["displayName"]["text"],
-            "address": hotel["formattedAddress"],
-            "rating": rating,
-            "score": score,
-            "summary": hotel.get(
-                "summary",
-                "Summary unavailable"
-            )
+            "name": hotel["name"],
+            "address": hotel["address"],
+            "rating": hotel.get("rating", 0),
+            "score": round(score, 2),
+            "summary": hotel.get("summary", "Summary unavailable")
         })
 
     results.sort(
