@@ -4,13 +4,9 @@ from ollama import chat
 
 
 with open(
-
-    "hotel_data.json",
-
+    "processed_hotels.json",
     encoding="utf-8"
-
 ) as f:
-
     hotels = json.load(f)
 
 
