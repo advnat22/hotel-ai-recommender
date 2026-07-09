@@ -69,7 +69,7 @@ function Login() {
 
             ?
 
-            "hhttps://hotel-ai-recommender.onrender.com/login"
+            "https://hotel-ai-recommender.onrender.com/login"
 
             :
 
