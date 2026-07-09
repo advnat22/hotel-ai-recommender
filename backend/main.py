@@ -4,12 +4,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from sqlalchemy.orm import Session
 
-from backend import models
-from backend import schemas
+import models
+import schemas
 
-from backend.database import engine
-from backend.database import get_db
-from backend.database import Base
+from database import engine
+from database import get_db
+from database import Base
 
 from pathlib import Path
 import json
