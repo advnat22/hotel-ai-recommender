@@ -159,7 +159,9 @@ def search(
 
             "rating": hotel["rating"],
 
-            "score": score
+            "score": score,
+
+            "summary": hotel.get("summary","Summary unavailable")
 
         })
 
