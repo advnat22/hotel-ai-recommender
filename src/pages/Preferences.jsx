@@ -51,7 +51,7 @@ function Preferences() {
 
             const response = await fetch(
 
-                "https://hotel-ai-recommender-xwlc-eight.vercel.app/preferences",
+                "https://hotel-ai-recommender-xwlc-eight.vercel.app/api/preferences",
 
                 {
 
