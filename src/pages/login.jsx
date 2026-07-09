@@ -69,11 +69,11 @@ function Login() {
 
             ?
 
-            "http://127.0.0.1:8000/login"
+            "https://hotel-ai-recommender-xwlc-eight.vercel.app/login"
 
             :
 
-            "http://127.0.0.1:8000/signup";
+            "https://hotel-ai-recommender-xwlc-eight.vercel.app/signup";
 
         try {
 
