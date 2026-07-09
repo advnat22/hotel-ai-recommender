@@ -31,7 +31,7 @@ function Search(){
 
                 <p>
 
-                    Personalized recommendations
+                    Personalized recommendations (Currently only works for Sentosa)
 
                 </p>
 
