@@ -10,7 +10,7 @@ function HotelResults(){
 
         fetch(
 
-            "https://hotel-ai-recommender-xwlc-eight.vercel.app/api/search"
+            "https://hotel-ai-recommender.onrender.com/search"
 
         )
 
