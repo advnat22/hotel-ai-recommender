@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi import Depends
 from fastapi.middleware.cors import CORSMiddleware
+from ranking_engine import hotel_score
 
 from sqlalchemy.orm import Session
 
@@ -108,25 +109,23 @@ def save_preferences(
     }
 
 import ranking_engine
-
-@app.get("/search")
+@app.get("/search/{user_id}")
 def search(
     user_id: int,
     db: Session = Depends(get_db)
 ):
-    pref = db.query(models.Preference).filter(
-        models.Preference.user_id == user_id
-    ).order_by(models.Preference.id.desc()).first()
+
+    pref = (
+        db.query(models.Preference)
+        .filter(models.Preference.user_id == user_id)
+        .order_by(models.Preference.id.desc())
+        .first()
+    )
 
     if not pref:
-        return {"message": "No preferences found for this user"}
-
-    pref_dict = {
-        "food": pref.food,
-        "transport": pref.transport,
-        "luxury": pref.luxury,
-        "cleanliness": pref.cleanliness
-    }
+        return {
+            "message": "No preferences found"
+        }
 
     file_path = Path(__file__).parent / "processed_hotels.json"
 
@@ -135,15 +134,33 @@ def search(
 
     results = []
 
+    preference = {
+        "food": pref.food,
+        "transport": pref.transport,
+        "luxury": pref.luxury,
+        "cleanliness": pref.cleanliness
+    }
+
     for hotel in hotels:
-        score = ranking_engine.hotel_score(hotel, pref_dict)
+
+        score = round(
+            hotel_score(
+                hotel,
+                preference
+            ),
+            2
+        )
 
         results.append({
+
             "name": hotel["name"],
+
             "address": hotel["address"],
-            "rating": hotel.get("rating", 0),
-            "score": round(score, 2),
-            "summary": hotel.get("summary", "Summary unavailable")
+
+            "rating": hotel["rating"],
+
+            "score": score
+
         })
 
     results.sort(
