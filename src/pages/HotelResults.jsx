@@ -8,11 +8,8 @@ function HotelResults(){
 
     useEffect(()=>{
 
-        fetch(
-
-            "https://hotel-ai-recommender.onrender.com/search"
-
-        )
+        const userId = localStorage.getItem("user_id");
+        fetch(`${API_URL}/search/${userId}`)
 
         .then(
 
