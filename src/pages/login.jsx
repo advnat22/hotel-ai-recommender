@@ -122,6 +122,7 @@ function Login() {
                     data.message ||
 
                     "Success"
+                    localStorage.setItem("user_id", data.user_id);
 
                 );
 
