@@ -1,31 +1,44 @@
-import { useEffect,useState } from "react";
-
+import { useEffect, useState } from "react";
 import "../styles/Results.css";
 
-function HotelResults(){
+function HotelResults() {
 
-    const [hotels,setHotels]=useState([]);
+    const [hotels, setHotels] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
 
         const userId = localStorage.getItem("user_id");
-        fetch(`${API_URL}/search/${userId}`)
 
-        .then(
+        if (!userId) {
 
-            res=>res.json()
+            alert("User not logged in");
 
+            return;
+
+        }
+
+        fetch(
+            `https://hotel-ai-recommender.onrender.com/search/${userId}`
         )
+        .then(res => res.json())
+        .then(data => {
 
-        .then(
+            console.log(data);
 
-            data=>setHotels(data)
+            setHotels(data);
 
-        );
+        })
+        .catch(err => {
 
-    },[]);
+            console.error(err);
 
-    return(
+            alert("Failed to load hotels");
+
+        });
+
+    }, []);
+
+    return (
 
         <div className="resultsContainer">
 
@@ -41,7 +54,7 @@ function HotelResults(){
 
                     hotels.map(
 
-                        (hotel,index)=>
+                        (hotel, index) =>
 
                         <div
 
@@ -53,7 +66,7 @@ function HotelResults(){
 
                             <div className="rankBadge">
 
-                                #{index+1}
+                                #{index + 1}
 
                             </div>
 
