@@ -1,16 +1,49 @@
-# React + Vite
+# AI-Powered Hotel Recommendation System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered hotel recommendation platform that provides personalized hotel suggestions based on user preferences. The application leverages the Google Places API to retrieve hotel information, ratings, and reviews, and uses a Large Language Model (LLM) to generate tailored recommendations in real time.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**🌐 Try the application here:** (https://hotel-ai-recommender-zgf2.vercel.app/)
 
-## React Compiler
+> **Note:** The backend is hosted on a free-tier service and may take up to a minute to respond on the first request after a period of inactivity.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- 🏨 Personalized hotel recommendations based on user preferences
+- 🤖 AI-powered recommendation engine using Large Language Models (LLMs)
+- 🌍 Real-time hotel data from the Google Places API
+- ⭐ Aggregates hotel ratings and user reviews
+- 💬 Natural language preference input
+- ⚡ Fast and responsive web interface
+- 📱 Responsive design for desktop and mobile devices
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Tech Stack
+
+### Frontend
+- React
+- JavaScript
+- HTML5
+- CSS3
+
+### Backend
+- FastAPI
+- Python
+
+### APIs & AI
+- Google Places API
+- Google Gemini API / Ollama (configurable LLM provider)
+
+## How It Works
+
+1. Users enter their travel preferences, including destination, budget, amenities, and other requirements.
+2. The backend retrieves relevant hotel information using the Google Places API.
+3. Hotel ratings, reviews, and metadata are processed.
+4. The LLM analyzes the user's preferences alongside the retrieved hotel data.
+5. Personalized hotel recommendations are generated and displayed to the user.
+
+
+## Contributors
+
+- **Advaith Natarajan**
